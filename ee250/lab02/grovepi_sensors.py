@@ -1,3 +1,4 @@
+
 """ EE 250L Lab 02: GrovePi Sensors
 
 List team members here.
@@ -28,11 +29,35 @@ import grovepi
 is, if you run `python3 grovepi_sensors.py` in terminal, this if-statement will 
 be true"""
 if __name__ == '__main__':
-    PORT = 4    # D4
+    PORT = 3    # D3
 
-    while True:
-        #So we do not poll the sensors too quickly which may introduce noise,
+potentiometer = 1
+
+grovepi.pinMode(potentiometer, "INPUT")
+
+time.sleep(1)
+
+adc_ref = 5
+
+grove_vcc = 5
+
+full_angle = 300
+
+
+while True:
+	#So we do not poll the sensors too quickly which may introduce noise,
         #sleep for a reasonable time of 200ms between each iteration.
         time.sleep(0.2)
 
         print(grovepi.ultrasonicRead(PORT))
+
+
+sensor_value = grovepi.analogRead(potentiometer)
+	
+voltage = round((float)(sensor_value) * adc_ref / 1023, 2)
+	
+degrees = round((voltage * full_angle) / grove_vcc, 2)
+ 
+print("rotary + %d" %(sensor_value))
+
+

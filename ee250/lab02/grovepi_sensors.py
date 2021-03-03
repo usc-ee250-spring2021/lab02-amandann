@@ -57,11 +57,11 @@ while True:
 
 	degrees = round((voltage * full_angle) / grove_vcc, 2)
 
+        if (grovepi.ultrasonicRead(PORT) < sensor_value ):		
+		setText_norefresh("%dcm OBJ PRES\n%dcm" %(sensor_value,grovepi.ultrasonicRead(PORT)))
 
-	setText("%dcm" %(sensor_value))
-        setText("\n%dcm" %(grovepi.ultrasonicRead(PORT)))
-	
-	
+	else:
+		setText_norefresh("%dcm          \n%dcm" %(sensor_value,grovepi.ultrasonicRead(PORT)))
  
 
 

@@ -1,4 +1,5 @@
 
+
 """ EE 250L Lab 02: GrovePi Sensors
 
 List team members here.
@@ -57,8 +58,8 @@ while True:
 	degrees = round((voltage * full_angle) / grove_vcc, 2)
 
 
-        setText("%d" %(grovepi.ultrasonicRead(PORT)))
-#	setText(rotary = %d" %(sensor_value))
+	setText("%dcm" %(sensor_value))
+        setText("\n%dcm" %(grovepi.ultrasonicRead(PORT)))
 	
 	
  

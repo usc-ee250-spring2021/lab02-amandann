@@ -24,6 +24,7 @@ sys.path.append('../../Software/Python/')
 sys.path.append('../../Software/Python/grove_rgb_lcd')
 
 import grovepi
+from grove_rgb_lcd import*
 
 """This if-statement checks if you are running this python file directly. That 
 is, if you run `python3 grovepi_sensors.py` in terminal, this if-statement will 
@@ -45,19 +46,21 @@ full_angle = 300
 
 
 while True:
-	#So we do not poll the sensors too quickly which may introduce noise,
+#	So we do not poll the sensors too quickly which may introduce noise,
         #sleep for a reasonable time of 200ms between each iteration.
         time.sleep(0.2)
 
-        print(grovepi.ultrasonicRead(PORT))
-
-
-sensor_value = grovepi.analogRead(potentiometer)
-	
-voltage = round((float)(sensor_value) * adc_ref / 1023, 2)
-	
-degrees = round((voltage * full_angle) / grove_vcc, 2)
+	sensor_value = grovepi.analogRead(potentiometer)
  
-print("rotary + %d" %(sensor_value))
+	voltage = round((float)(sensor_value) * adc_ref / 1023, 2)
+
+	degrees = round((voltage * full_angle) / grove_vcc, 2)
+
+
+        setText("%d" %(grovepi.ultrasonicRead(PORT)))
+#	setText(rotary = %d" %(sensor_value))
+	
+	
+ 
 
 
